@@ -13,5 +13,5 @@ _fab()
     COMPREPLY=($(compgen -W "${tags}" $cur))
 }
 
-# Assign the auto-completion function _get for our command get.
+# Assign the auto-completion function _fab for our command fab.
 complete -F _fab fab
