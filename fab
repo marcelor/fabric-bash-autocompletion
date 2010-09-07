@@ -1,0 +1,17 @@
+_fab()
+{
+    local cur
+    COMPREPLY=()
+    # Variable to hold the current word
+    cur="${COMP_WORDS[COMP_CWORD]}"
+
+    # Build a list of the available tasks using the command 'fab -l'
+    local tags=$(fab -l 2>/dev/null | grep "^    " | awk '{print $1;}')
+
+    # Generate possible matches and store them in the
+    # array variable COMPREPLY
+    COMPREPLY=($(compgen -W "${tags}" $cur))
+}
+
+# Assign the auto-completion function _get for our command get.
+complete -F _fab fab
